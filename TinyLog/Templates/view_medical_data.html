@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/images/icons.png" type="image/x-icon">
+    <title>Baby Blueprint</title>
+    <style>
+        body {
+            width: 100%;
+            height: 145vh;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            background-image: 
+                url('/static/images/noise.png'),
+                linear-gradient(180deg, hsla(226, 81%, 76%, 1) 0%, rgb(130, 131, 177) 100%); /* Gradient */
+            background-repeat: repeat, no-repeat;
+            background-size: auto, cover;
+            background-position: top left, center;
+            opacity: 1;
+        }
+        .logo {
+            display: block;
+            width: 250px;
+            height: auto;
+        }
+        div {
+            display: grid;
+        }
+        .medical-container{
+            display: grid;
+            grid-template-columns: 150px auto;
+        }
+        h1 {
+            text-align: left;
+            margin: 20px 20px;
+            font-size: 50px;
+            color: rgb(0, 0, 0);
+            text-shadow: 3px 4px rgb(139, 138, 138);
+        }
+        h2 {
+            text-align: left;
+            margin: 5px 10px;
+            font-size: 20px;
+            color: rgb(0, 0, 0);
+        }
+        .h2 {
+            text-align: left;
+            margin: 5px 5px;
+            font-size: 4em;
+            color: rgb(0, 0, 0);
+            text-shadow: 3px 4px rgb(139, 138, 138);
+        }
+        .header{
+            display: flex;
+            align-items: center;
+        }
+        p{
+            display: inherit;
+            margin: 5px;
+            padding: 5px;
+            color: rgb(0, 0, 0);
+        }
+        .SWH{
+            display: flex;
+        }
+        .record-details {
+            margin: 20px;
+            padding: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+        .record-container{
+            display: grid;
+            column-gap: 5px;
+            grid-template-columns: auto auto;
+        }
+        
+        .item1{
+            grid-column-start: 1;
+            grid-column-end: 1;
+        }
+        .item3, .item4, .item5, .item6{
+            grid-column-start: 2;
+            display: flex;
+            margin: 0 15px;
+        }
+        .button {
+            padding: 10px 30px;
+            font-size: 30px;
+            background-color: rgb(21, 21, 241);
+            color: rgb(255, 255, 255);
+            border-style: solid;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 40px;
+            border-style: solid;
+        }
+        .add-record-button {
+            background-color: rgb(21, 21, 241);
+            color: rgb(255, 255, 255);
+        }
+        .save-copy-button {
+            background-color: rgb(21, 21, 241);
+            color: rgb(255, 255, 255);
+        }
+        .save-copy-button:hover {
+            background-color: rgb(235, 235, 235);
+            color: blue;
+        }
+        .home-button {
+            background-color: rgb(21, 21, 241);
+            color: rgb(255, 255, 255);
+        }
+        .home-button:hover {
+            background-color: rgb(235, 235, 235);
+            color: blue;
+        }
+        .bottom-button{
+            display: block;
+            text-align: center;
+            margin: 50px 0px 0px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
+        <h2 class="h2">BABY BLUEPRINT</h2>
+    </div>
+    <h1>PATIENT RECORD</h1>
+    <div class="record-details">
+        <div class="record-container">
+            <p><strong>CHILD'S NAME:</strong> {{ patient.name }}</p>
+            <p><strong>PLACE OF BIRTH:</strong> {{ patient.place_of_birth }}</p>
+            <p><strong>BIRTHDATE:</strong> {{ patient.date_of_birth }}</p>
+            <div class="SWH">
+                <p><strong>SEX:</strong>{{ patient.sex }}</p>
+                <p><strong>WEIGHT:</strong> {{ patient.birth_weight }} g</p>
+                <p><strong>HEIGHT:</strong> {{ patient.birth_height }} cm</p>
+            </div>
+            <p><strong>PEDIATRICIAN:</strong> {{ patient.pediatrician }}</p>
+        </div>
+        {% if medical_record %}
+            <h2>MEDICAL HISTORY:</h2>
+            <div class="medical-container">
+                <div class="item1">
+                    <p><strong>{{ medical_record.date_of_visit}}</strong></p>
+                </div>
+                <p class="item2"><strong> - {{medical_record.type}} ({{ medical_record.name_of_facility }}) </strong></p>
+                <p class="item3"><strong>CC:</strong> {{ medical_record.chief_complaint }}</p>
+                <p class="item4"><strong>Impression:</strong> {{ medical_record.medical_impression }}</p>
+                <p class="item5"><strong>Attending Physician:</strong> {{'Dr. '}}{{ medical_record.name_of_physician }}</p>
+            {% else %}
+                <p>No medical records found for this patient.</p>
+            {% endif %}
+            </div>   
+    </div>  
+    <div class="bottom-button">
+        <a href="{% url 'medical_pdf' patient_id=patient.id %}" class="button save-copy-button">DOWNLOAD AS PDF</a>
+        <a href="{% url 'home' %}" class="button home-button">HOME</a>
+    </div>
+</body>
+</html>

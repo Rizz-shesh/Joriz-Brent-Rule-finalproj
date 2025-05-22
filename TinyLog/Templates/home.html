@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/images/icons.png" type="image/x-icon">
+    <title>Well Baby Blueprint</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: 
+                url('/static/images/noise.png'),
+                linear-gradient(180deg, hsla(226, 81%, 76%, 1) 0%, rgb(130, 131, 177) 100%); /* Gradient */
+            background-repeat: repeat, no-repeat;
+            background-size: auto, cover;
+            background-position: top left, center;
+            opacity: 1;
+        }
+        .container{
+            margin: 0 auto;
+            display: flex;
+            width: 100%;
+            min-height: 33vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .noise{
+            background: rgb(76, 106, 190);
+            background-image: url(/static/images/noise.png);
+        }
+        .logo {
+            max-width: 90%;
+            width: 40rem;
+            height: auto;
+            margin-top: 60px;
+        }
+        .containerleft{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .containerright{
+            display: flex;
+            margin: auto 0px auto 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        .button {
+            display: inline-block;
+            font-size: 50px;    
+            padding: 30px 50px;
+            margin: 20px;
+            background-color: rgb(21, 21, 241);
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            border-radius: 20px;
+            border-style: solid;
+        }
+        .button:hover {
+            background-color: rgb(235, 235, 235);
+            color: blue;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            color: rgb(0, 0, 0);
+            font-size: 6em;
+            text-shadow: 3px 4px rgb(80, 74, 133);
+        }
+        h2 {
+            text-align: left;
+            margin: 5px 100px;
+        }
+        p {
+            font-size: 25px;
+            color: rgb(0, 0, 0);
+            text-shadow: 1px 2px rgb(139, 138, 138);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="containerleft">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
+        </div>
+        <div class="containerright">
+            <h1>WELCOME!</h1>
+            <a href="{% url 'login' %}" class="button">ADD ENTRY</a>
+            <a href="{% url 'view_data' %}" class="button">VIEW DATA</a>
+            <p>A PROJECT BY:<br>Joriz Brent Rule</p>
+        </div>
+    </div>
+</body>
+</html>
