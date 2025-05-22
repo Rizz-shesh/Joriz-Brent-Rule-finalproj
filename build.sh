@@ -3,7 +3,8 @@
 set -o errexit
 
 # Install system dependencies
-apt-get update && apt-get install -y wkhtmltopdf
+sudo apt-get update
+sudo apt-get install -y wkhtmltopdf xvfb
 
 # Install Python dependencies
 pip install -r requirements.txt
