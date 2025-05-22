@@ -137,3 +137,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT', 'False') == 'True'
 SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', 'False') == 'True'
 CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE', 'False') == 'True'
+
+# wkhtmltopdf settings
+WKHTMLTOPDF_CMD = '/usr/bin/wkhtmltopdf'
+WKHTMLTOPDF_CMD_OPTIONS = {
+    'quiet': True,
+}
