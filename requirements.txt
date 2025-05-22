@@ -4,4 +4,5 @@ whitenoise>=6.5.0
 python-dotenv>=1.0.0
 dj-database-url>=2.1.0
 psycopg2-binary>=2.9.9
-django-wkhtmltopdf>=3.4.0 
+django-wkhtmltopdf>=3.4.0
+pdfkit==1.0.0 
